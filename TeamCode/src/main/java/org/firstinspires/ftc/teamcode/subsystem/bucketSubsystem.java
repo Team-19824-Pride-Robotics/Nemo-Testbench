@@ -38,6 +38,9 @@ public class bucketSubsystem {
     public void bucketUp(){
         bucketTargetPosition = bucketUp;
     }
+    public void bucketStop(){
+        bucket.setPwmDisable();
+    }
     public double getBucketPosition() {
         return bucketTargetPosition;
     }

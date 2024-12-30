@@ -10,6 +10,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 import org.firstinspires.ftc.teamcode.subsystem.LinkageSubsystem;
+import org.firstinspires.ftc.teamcode.subsystem.armSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.bucketSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.clawSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.intakeSubsystem;
@@ -23,9 +24,9 @@ public class basicTeleop extends OpMode {
     private intakeSubsystem intake;
     private bucketSubsystem bucket;
     private clawSubsystem claw;
+    private armSubsystem arm;
 
     //arm
-    ServoImplEx arm;
 
     //wrist
     ServoImplEx rw;
@@ -48,11 +49,8 @@ public class basicTeleop extends OpMode {
         bucket.init();
         claw = new clawSubsystem(hardwareMap);
         claw.init();
-
-
-        //arm
-        arm = (ServoImplEx) hardwareMap.get(Servo.class, "arm");
-        arm.setPwmRange(new PwmControl.PwmRange(505, 2495));
+        arm = new armSubsystem(hardwareMap);
+        arm.init();
 
         //wrist
         rw = (ServoImplEx) hardwareMap.get(Servo.class, "rw");
@@ -88,17 +86,22 @@ public class basicTeleop extends OpMode {
         //lift control
         if (gamepad2.back) {
             lift.pickup();
+            arm.armPickup();
         }
         if (gamepad2.dpad_up) {
             lift.bucketHigh();
+            arm.armSample();
         }
         if (gamepad2.dpad_down) {
             lift.bucketLow();
+            arm.armSample();
         }
         if (gamepad2.dpad_right) {
             lift.barHigh();
+            arm.armSpecimen();
         }   if (gamepad2.dpad_left) {
             lift.barLow();
+            arm.armSpecimen();
         }
 
         //intake control
@@ -118,6 +121,9 @@ public class basicTeleop extends OpMode {
         if (gamepad2.a) {
             bucket.bucketDown();
         }
+        if (gamepad2.start) {
+            bucket.bucketStop();
+        }
 
         //claw control
         if (gamepad2.right_bumper) {
@@ -131,10 +137,10 @@ public class basicTeleop extends OpMode {
         intake.update();
         bucket.update();
         claw.update();
+        arm.update();
 
 
         telemetry.addData("Run time", getRuntime());
-        telemetry.addData("1", "test");
         //linkage
         telemetry.addData("Stick Control Enabled", linkage.isStickControlEnabled());
         telemetry.addData("Stick Control Min", linkage.getStickControlMin());
@@ -155,6 +161,9 @@ public class basicTeleop extends OpMode {
         telemetry.addData("bucketEncoder", bucket.getBucketEncoderPosition());
         //claw
         telemetry.addData("clawPosition", claw.getClawPosition());
+        //arm
+        telemetry.addData("armTarget", arm.getArmPosition());
+        telemetry.addData("armEncoder", arm.getArmEncoderPosition());
 
         telemetry.update();
 
