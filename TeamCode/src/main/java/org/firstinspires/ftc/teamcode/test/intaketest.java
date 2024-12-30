@@ -26,7 +26,7 @@ public class intaketest extends OpMode {
     public static  double negpower = -1;
 
     public static double sup = .28;
-    public static double sdown =.36;
+    public static double sdown =.37;
 
     @Override
     public void init() {

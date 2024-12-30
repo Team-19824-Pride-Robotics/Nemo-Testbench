@@ -18,7 +18,7 @@ public class bucketSubsystem {
     public static double bucketDown = 0.37;
     public static double bucketUp = .28;
 
-    public double bucketTargetPosition = .28;
+    public double bucketTargetPosition =.28;
 
     public bucketSubsystem(HardwareMap hardwareMap) {
         bucket = hardwareMap.get(ServoImplEx.class, "bucket");
@@ -38,9 +38,7 @@ public class bucketSubsystem {
     public void bucketUp(){
         bucketTargetPosition = bucketUp;
     }
-    public void bucketStop(){
-        bucket.setPwmDisable();
-    }
+
     public double getBucketPosition() {
         return bucketTargetPosition;
     }

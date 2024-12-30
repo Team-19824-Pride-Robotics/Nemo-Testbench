@@ -14,7 +14,7 @@ public class liftSubsystem {
 
     public static final double P = 0.005, I = 0, D = 0;
     //lift max 2980
-    public static double pickup = 110;
+    public static double pickup = 0;
     public static double bucketLow = 800;
     public static double bucketHigh = 2980;
     public static double barLow = 1400;

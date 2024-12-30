@@ -99,7 +99,8 @@ public class basicTeleop extends OpMode {
         if (gamepad2.dpad_right) {
             lift.barHigh();
             arm.armSpecimen();
-        }   if (gamepad2.dpad_left) {
+        }
+        if (gamepad2.dpad_left) {
             lift.barLow();
             arm.armSpecimen();
         }
@@ -120,9 +121,6 @@ public class basicTeleop extends OpMode {
         }
         if (gamepad2.a) {
             bucket.bucketDown();
-        }
-        if (gamepad2.start) {
-            bucket.bucketStop();
         }
 
         //claw control
