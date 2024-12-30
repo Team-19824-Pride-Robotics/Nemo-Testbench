@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.test;
 
 
 
@@ -7,12 +7,11 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.PwmControl;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 @Config
-@TeleOp(name="clawtest")
+@TeleOp(name="clawtest",  group="Test")
 public class clawtest extends OpMode {
 
     //pid
@@ -48,7 +47,7 @@ public class clawtest extends OpMode {
 
 
         telemetry.addData("Run time", getRuntime());
-        telemetry.addData("1", "test");
+        telemetry.addData("1", "org/firstinspires/ftc/teamcode/test");
         telemetry.update();
     }
 }

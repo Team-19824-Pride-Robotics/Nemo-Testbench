@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.test;
 
 
 
@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 @Config
-@TeleOp(name="linkageTest")
+@TeleOp(name="linkageTest",  group="Test")
 public class linkagetest extends OpMode {
 
     //pid
@@ -108,7 +108,7 @@ public class linkagetest extends OpMode {
 
 
             telemetry.addData("Run time", getRuntime());
-            telemetry.addData("1", "test");
+            telemetry.addData("1", "org/firstinspires/ftc/teamcode/test");
             telemetry.addData("Stick Control Enabled", stickControlEnabled);
             telemetry.addData("Stick Control Min", stickControlMin);
             telemetry.addData("Servo 1 Position", s1.getPosition());

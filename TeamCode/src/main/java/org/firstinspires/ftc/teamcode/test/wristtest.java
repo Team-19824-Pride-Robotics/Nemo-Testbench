@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.test;
 
 
 
@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 @Config
-@TeleOp(name="wristTest")
+@TeleOp(name="wristTest",  group="Test")
 public class wristtest extends OpMode {
 
     //pid
@@ -61,7 +61,7 @@ public class wristtest extends OpMode {
 
 
         telemetry.addData("Run time", getRuntime());
-        telemetry.addData("1", "test");
+        telemetry.addData("1", "org/firstinspires/ftc/teamcode/test");
         telemetry.update();
     }
 }

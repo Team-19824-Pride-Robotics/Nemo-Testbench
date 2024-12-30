@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.test;
 
 
 
@@ -14,23 +14,31 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 @Config
-@TeleOp(name="armTest")
-public class armtest extends OpMode {
+@TeleOp(name="intakeTest",  group="Test")
+public class intaketest extends OpMode {
 
     //pid
     ServoImplEx s1;
 
-    public static double score = .2;
-    public static double pickup =.98;
+    DcMotorEx m1;
+
+    public static double pospower =1;
+    public static  double negpower = -1;
+
+    public static double sup = .28;
+    public static double sdown =.36;
 
     @Override
     public void init() {
 
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
-        s1 = (ServoImplEx) hardwareMap.get(Servo.class, "arm");
+        s1 = (ServoImplEx) hardwareMap.get(Servo.class, "bucket");
         s1.setPwmRange(new PwmControl.PwmRange(505, 2495));
 
+        m1 = hardwareMap.get(DcMotorEx.class, "intake");
+        m1.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        m1.setDirection(DcMotorEx.Direction.REVERSE);
 
 
 
@@ -42,16 +50,27 @@ public class armtest extends OpMode {
         //winch
 
         if (gamepad1.dpad_down) {
-            s1.setPosition(pickup);
+            s1.setPosition(sdown);
         }
         if (gamepad1.dpad_up) {
-            s1.setPosition(score);
+            s1.setPosition(sup);
+        }
+        if (gamepad1.x) {
+            m1.setPower(pospower);
+        }
+        if (gamepad1.b){
+            m1.setPower(negpower);
+        }
+        if (gamepad1.a){
+            m1.setPower(0);
         }
 
 
 
         telemetry.addData("Run time", getRuntime());
-        telemetry.addData("1", "test");
+        telemetry.addData("1", "org/firstinspires/ftc/teamcode/test");
+        telemetry.addData("pos1", m1.getCurrentPosition());
+        telemetry.addData("power1", m1.getPower());
         telemetry.update();
     }
 }

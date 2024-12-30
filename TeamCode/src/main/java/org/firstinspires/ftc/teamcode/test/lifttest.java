@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.test;
 
 
 
@@ -12,7 +12,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 @Config
-@TeleOp(name="liftTest")
+@TeleOp(name="liftTest",  group="Test")
 public class lifttest extends OpMode {
 
     //pid
@@ -79,7 +79,7 @@ public class lifttest extends OpMode {
 
         telemetry.addData("target", target);
         telemetry.addData("Run time", getRuntime());
-        telemetry.addData("1", "test");
+        telemetry.addData("1", "org/firstinspires/ftc/teamcode/test");
         telemetry.addData("pos1", lift1.getCurrentPosition());
         telemetry.addData("power1", lift1.getPower());
         telemetry.addData("pos2", lift2.getCurrentPosition());
