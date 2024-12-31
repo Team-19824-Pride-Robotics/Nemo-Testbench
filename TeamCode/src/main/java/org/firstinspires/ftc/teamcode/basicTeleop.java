@@ -5,9 +5,6 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.PwmControl;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 import org.firstinspires.ftc.teamcode.subsystem.LinkageSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.armSubsystem;
@@ -15,6 +12,7 @@ import org.firstinspires.ftc.teamcode.subsystem.bucketSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.clawSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.intakeSubsystem;
 import org.firstinspires.ftc.teamcode.subsystem.liftSubsystem;
+import org.firstinspires.ftc.teamcode.subsystem.wristSubsystem;
 
 @Config
 @TeleOp(name="basicTeleop")
@@ -25,12 +23,7 @@ public class basicTeleop extends OpMode {
     private bucketSubsystem bucket;
     private clawSubsystem claw;
     private armSubsystem arm;
-
-    //arm
-
-    //wrist
-    ServoImplEx rw;
-    ServoImplEx lw;
+    private wristSubsystem wrist;
 
 
 
@@ -51,12 +44,8 @@ public class basicTeleop extends OpMode {
         claw.init();
         arm = new armSubsystem(hardwareMap);
         arm.init();
-
-        //wrist
-        rw = (ServoImplEx) hardwareMap.get(Servo.class, "rw");
-        rw.setPwmRange(new PwmControl.PwmRange(505, 2495));
-        lw = (ServoImplEx) hardwareMap.get(Servo.class, "lw");
-        lw.setPwmRange(new PwmControl.PwmRange(505, 2495));
+        wrist = new wristSubsystem(hardwareMap);
+        wrist.init();
 
 
     }
@@ -87,22 +76,27 @@ public class basicTeleop extends OpMode {
         if (gamepad2.back) {
             lift.pickup();
             arm.armPickup();
+            wrist.wristPickup();
         }
         if (gamepad2.dpad_up) {
             lift.bucketHigh();
             arm.armSample();
+            wrist.wristScore();
         }
         if (gamepad2.dpad_down) {
             lift.bucketLow();
             arm.armSample();
+            wrist.wristScore();
         }
         if (gamepad2.dpad_right) {
             lift.barHigh();
             arm.armSpecimen();
+            wrist.wristScore();
         }
         if (gamepad2.dpad_left) {
             lift.barLow();
             arm.armSpecimen();
+            wrist.wristScore();
         }
 
         //intake control
@@ -136,6 +130,7 @@ public class basicTeleop extends OpMode {
         bucket.update();
         claw.update();
         arm.update();
+        wrist.update();
 
 
         telemetry.addData("Run time", getRuntime());
@@ -162,6 +157,11 @@ public class basicTeleop extends OpMode {
         //arm
         telemetry.addData("armTarget", arm.getArmPosition());
         telemetry.addData("armEncoder", arm.getArmEncoderPosition());
+        //wrist
+        telemetry.addData("lwTarget", wrist.getlwTargetPosition());
+        telemetry.addData("lwEncoder", wrist.getLwEncoderPosition());
+        telemetry.addData("wristTarget", wrist.getRwTargetPosition());
+        telemetry.addData("wristEncoder", wrist.getRwEncoderPosition());
 
         telemetry.update();
 
