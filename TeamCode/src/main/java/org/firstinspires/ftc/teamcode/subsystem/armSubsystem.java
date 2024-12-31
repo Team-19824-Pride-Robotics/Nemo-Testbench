@@ -12,7 +12,7 @@ public class armSubsystem {
 
     private final ServoImplEx arm;
     private final AnalogInput encoderArm;
-    public static double armPickup = .24;
+    public static double armPickup = .32;
 
     public static double armSample = .7;
     public static double armSpecimen = .88;
