@@ -89,12 +89,12 @@ public class basicTeleop extends OpMode {
             wrist.wristScore();
         }
         if (gamepad2.dpad_right) {
-            lift.barHigh();
+            lift.barLow();
             arm.armSpecimen();
             wrist.wristScore();
         }
         if (gamepad2.dpad_left) {
-            lift.barLow();
+            lift.barHigh();
             arm.armSpecimen();
             wrist.wristScore();
         }

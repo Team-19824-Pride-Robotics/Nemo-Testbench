@@ -17,8 +17,8 @@ public class liftSubsystem {
     public static double pickup = 0;
     public static double bucketLow = 800;
     public static double bucketHigh = 2980;
-    public static double barLow = 1400;
-    public static double barHigh = 200;
+    public static double barLow = 200;
+    public static double barHigh = 1400;
 
     private double target = 0;
 

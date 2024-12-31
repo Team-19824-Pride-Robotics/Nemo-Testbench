@@ -17,7 +17,7 @@ public class armSubsystem {
     public static double armSample = .7;
     public static double armSpecimen = .88;
 
-    public double armTargetPosition =.24;
+    public double armTargetPosition =.32;
 
     public armSubsystem(HardwareMap hardwareMap) {
         arm = hardwareMap.get(ServoImplEx.class, "arm");
