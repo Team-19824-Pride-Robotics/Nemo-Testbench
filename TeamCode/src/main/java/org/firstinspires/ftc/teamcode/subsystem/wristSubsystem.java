@@ -10,18 +10,21 @@ import com.qualcomm.robotcore.hardware.ServoImplEx;
 
 public class wristSubsystem {
 
-    private final ServoImplEx rw, lw;
+    public final ServoImplEx rw, lw;
     private final AnalogInput encoderRw, encoderLw;
 
-    public static double rwPickup = .34;
-    public static double lwPickup = .38;
+    public static double rwPickup = .33;
+    public static double lwPickup = .37;
 
     public static double rwScore = .46;
     public static double lwScore = .5;
 
+    public static double rwOut = .30;
+    public static double lwOut = .34;
 
-    public double rwTargetPosition;
-    public double lwTargetPosition;
+
+    public double rwTargetPosition =.33;
+    public double lwTargetPosition = .37;
 
     public wristSubsystem(HardwareMap hardwareMap) {
         rw = hardwareMap.get(ServoImplEx.class, "rw");
@@ -45,6 +48,10 @@ public class wristSubsystem {
     public void wristScore() {
         rwTargetPosition = rwScore;
         lwTargetPosition = lwScore;
+    }
+    public void wristOut() {
+        rwTargetPosition = rwOut;
+        lwTargetPosition = lwOut;
     }
 
     public double getRwTargetPosition() {

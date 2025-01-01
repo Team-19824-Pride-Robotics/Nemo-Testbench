@@ -25,8 +25,8 @@ public class armcombotest extends OpMode {
     public static double lw1 = .5;
     public static double lw2 =.42;
 
-    public static double rwpickup = .38;
-    public static double lwpickup = .42;
+    public static double rwpickup = .36;
+    public static double lwpickup = .40;
 
     public static double rwscore = .46;
     public static double lwscore = .5;
@@ -38,7 +38,7 @@ public class armcombotest extends OpMode {
 
     ServoImplEx s0;
 
-    public static double armpickup = .24;
+    public static double armpickup = .30;
     public static double armscore = .7;
     @Override
     public void init() {
