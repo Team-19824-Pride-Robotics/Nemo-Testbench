@@ -17,9 +17,9 @@ public class LinkageTest2 extends OpMode {
     public static double rl1 = 0.09, rl2 = 0.27;
     public static double ll1 = 0.14, ll2 = 0.45;
 
-    private static final double SERVO1_MIN = 0.09, SERVO1_MAX = 0.27;
-    private static final double SERVO2_MIN = 0.14, SERVO2_MAX = 0.45;
-    private static final double SERVO_FULL_MIN = 0.01, SERVO_FULL_MAX = 0.99;
+    public static final double SERVO1_MIN = 0.07, SERVO1_MAX = 0.27;
+    public static final double SERVO2_MIN = 0.13, SERVO2_MAX = 0.45;
+    public static final double SERVO_FULL_MIN = 0.01, SERVO_FULL_MAX = 0.99;
 
     private boolean stickControlEnabled = false;
     private double stickControlMin = SERVO1_MIN;

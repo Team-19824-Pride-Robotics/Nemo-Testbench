@@ -230,7 +230,7 @@ public class Teleop extends OpMode {
             }
         }
         if (!intaking){
-            if (distance <=250&& distance>25){
+            if (distance <=250&& distance>25 ){
                 pattern = RevBlinkinLedDriver.BlinkinPattern.GREEN;
             }
             else if(distance<=25){
