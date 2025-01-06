@@ -16,7 +16,7 @@ public class bucketSubsystem {
     private final AnalogInput encoderBucket;
 
     public static double bucketDown = 0.37;
-    public static double bucketUp = .31;
+    public static double bucketUp = .3;
 
     public double bucketTargetPosition =.31 ;
 

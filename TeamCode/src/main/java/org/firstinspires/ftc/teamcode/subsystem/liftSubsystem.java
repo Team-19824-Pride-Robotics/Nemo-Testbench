@@ -17,8 +17,8 @@ public class liftSubsystem {
     public static double pickup = 0;
     public static double bucketLow = 800;
     public static double bucketHigh = 2980;
-    public static double barLow = 200;
-    public static double barHigh = 1400;
+    public static double barLow = 700;
+    public static double barHigh = 2000;
 
     private double target = 0;
 
@@ -44,6 +44,9 @@ public class liftSubsystem {
     }
     public void bucketHigh() {
         target = bucketHigh;
+    }
+    public void score() {
+        target = target - 600;
     }
     public void barLow() {
         target = barLow;

@@ -5,6 +5,7 @@ import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import com.qualcomm.hardware.lynx.LynxModule;
 import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.ColorSensor;
@@ -23,9 +24,10 @@ import org.firstinspires.ftc.teamcode.subsystem.wristSubsystem;
 
 import java.util.List;
 
+@Disabled
 @Config
-@TeleOp(name="Teleop")
-public class Teleop extends OpMode {
+@TeleOp(name="Teleop2")
+public class Teleop2 extends OpMode {
     private LinkageSubsystem linkage;
     private liftSubsystem lift;
     private intakeSubsystem intake;
@@ -42,7 +44,6 @@ public class Teleop extends OpMode {
     boolean pickup2 =  false;
     boolean liftPickup = true;
     boolean intaking = false;
-    boolean speicmenScore = false;
 
     private ElapsedTime elapsedtime;
     private List<LynxModule> allHubs;
@@ -211,23 +212,20 @@ public class Teleop extends OpMode {
             wrist.wristOut();
 
         }
-        if (gamepad2.dpad_right) {
+        /*if (gamepad2.dpad_right) {
             lift.barLow();
             arm.armSpecimen();
-            wrist.wristScore();
+            wrist.wristScoreSpeicmen();
         }
         if (gamepad2.dpad_left) {
             lift.barHigh();
             arm.armSpecimen();
-            wrist.wristScore();
+            wrist.wristScoreSpeicmen();
         }
         if (gamepad1.start){
-            lift.score();
-            speicmenScore = true;
-        }
-        if (lift.getLift1Position()<= (lift.getTarget()-550) && speicmenScore) {
+            wrist.wristScoreSpeicmen2();
             arm.armSpecimen2();
-        }
+        }*/
         if ((arm.getArmEncoderPosition() >= 125 && dpad_right) || (arm.getArmEncoderPosition() >= 120 && dpad_left) || (arm.getArmEncoderPosition() >= 200 && dpad_up) || (arm.getArmEncoderPosition() >= 200 && dpad_down)) {
             wrist.wristScore();
             pickup = false;
@@ -256,10 +254,10 @@ public class Teleop extends OpMode {
         }
 
         //claw control
-        if (gamepad1.right_bumper) {
+        if (gamepad2.right_bumper) {
             claw.clawOpen();
         }
-        if (gamepad1.left_bumper) {
+        if (gamepad2.left_bumper) {
             claw.clawClose();
         }
 
