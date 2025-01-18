@@ -13,9 +13,12 @@ public class armSubsystem {
     private final ServoImplEx arm;
     private final AnalogInput encoderArm;
     public static double armPickup = .36;
+    public static double armPickupSpcimen = .86;
 
     public static double armSample = .7;
-    public static double armSpecimen = .88;
+    public static double armSpecimen = .86;
+    public static double armSpecimen2 = .9;
+
     public static double armPickup2 = .3;
 
     public double armTargetPosition =.3;
@@ -38,6 +41,9 @@ public class armSubsystem {
     public void armPickup2(){
         armTargetPosition = armPickup2;
     }
+    public void armPickupSpeicmen() {
+        armTargetPosition= armPickupSpcimen;
+    }
 
     public void armSample(){
         armTargetPosition = armSample;
@@ -45,6 +51,10 @@ public class armSubsystem {
     public void armSpecimen(){
         armTargetPosition = armSpecimen;
     }
+    public void armSpecimen2(){
+        armTargetPosition = armSpecimen2;
+    }
+
     public double getArmPosition() {
         return armTargetPosition;
     }

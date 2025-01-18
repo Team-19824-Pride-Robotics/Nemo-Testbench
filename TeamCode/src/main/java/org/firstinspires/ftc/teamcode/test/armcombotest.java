@@ -77,7 +77,6 @@ public class armcombotest extends OpMode {
             s2.setPosition(lwpickup);
             s1.setPosition(rwpickup);
             s0.setPosition(armpickup);
-            s3.setPosition(clawopen);
         }
 
         if (gamepad1.y) {
@@ -88,6 +87,9 @@ public class armcombotest extends OpMode {
 
         if (gamepad1.options) {
             s3.setPosition(clawclose); 
+        }
+        if (gamepad1.back) {
+            s3.setPosition(clawopen);
         }
 
 
